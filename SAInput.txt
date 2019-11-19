@@ -1,0 +1,13 @@
+begin
+	int a;
+	int b;
+	int c;
+	a = 12;
+	b = 13;
+	c = a + b;
+	if a > b then
+		a = a * 2;
+	else
+		b = b * 3;
+	endif
+end

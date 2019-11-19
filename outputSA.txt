@@ -1,0 +1,277 @@
+Token: KEYWORD        Lexeme: begin
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+
+
+Token: KEYWORD        Lexeme: int
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Declarative> -> <type> <id> <MoreIds>; | <empty>
+
+
+Token: IDENTIFIER     Lexeme: a
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreIds> -> , <id> <MoreIds> ; | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: KEYWORD        Lexeme: int
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Declarative> -> <type> <id> <MoreIds>; | <empty>
+
+
+Token: IDENTIFIER     Lexeme: b
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreIds> -> , <id> <MoreIds> ; | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: KEYWORD        Lexeme: int
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Declarative> -> <type> <id> <MoreIds>; | <empty>
+
+
+Token: IDENTIFIER     Lexeme: c
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreIds> -> , <id> <MoreIds> ; | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: IDENTIFIER     Lexeme: a
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Assign> -> <id> = <Expression> <MoreStatements> ;
+
+
+Token: OPERATOR       Lexeme: =
+
+
+Token: INTEGER        Lexeme: 12
+<Expression> -> <Term> <MoreExpressions>
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: IDENTIFIER     Lexeme: b
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Assign> -> <id> = <Expression> <MoreStatements> ;
+
+
+Token: OPERATOR       Lexeme: =
+
+
+Token: INTEGER        Lexeme: 13
+<Expression> -> <Term> <MoreExpressions>
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: IDENTIFIER     Lexeme: c
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Assign> -> <id> = <Expression> <MoreStatements> ;
+
+
+Token: OPERATOR       Lexeme: =
+
+
+Token: IDENTIFIER     Lexeme: a
+<Expression> -> <Term> <MoreExpressions>
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: OPERATOR       Lexeme: +
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+
+
+Token: IDENTIFIER     Lexeme: b
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: KEYWORD        Lexeme: if
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+
+
+Token: IDENTIFIER     Lexeme: a
+<Conditional> -> <Expression> <MoreConditionals>
+<Expression> -> <Term> <MoreExpressions>
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: OPERATOR       Lexeme: >
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+<empty> -> <epsilon>
+<MoreConditionals> -> <relop> <Expression | <empty>
+
+
+Token: IDENTIFIER     Lexeme: b
+<Expression> -> <Term> <MoreExpressions>
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: KEYWORD        Lexeme: then
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+<empty> -> <epsilon>
+
+
+Token: IDENTIFIER     Lexeme: a
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Assign> -> <id> = <Expression> <MoreStatements> ;
+
+
+Token: OPERATOR       Lexeme: =
+
+
+Token: IDENTIFIER     Lexeme: a
+<Expression> -> <Term> <MoreExpressions>
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: OPERATOR       Lexeme: *
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+
+
+Token: INTEGER        Lexeme: 2
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: KEYWORD        Lexeme: else
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+<empty> -> <epsilon>
+
+
+Token: IDENTIFIER     Lexeme: b
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<Assign> -> <id> = <Expression> <MoreStatements> ;
+
+
+Token: OPERATOR       Lexeme: =
+
+
+Token: IDENTIFIER     Lexeme: b
+<Expression> -> <Term> <MoreExpressions>
+<Term> -> <Factor> <MoreTerms>
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: OPERATOR       Lexeme: *
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+
+
+Token: INTEGER        Lexeme: 3
+<Factor> -> ( <Expression> ) | <id> | <num>
+
+
+Token: SEPARATOR      Lexeme: ;
+<MoreTerms> -> * <Factor> <MoreTerms> | / <Factor> <MoreTerms> | <empty>
+<empty> -> <epsilon>
+<MoreExpressions -> + <Term> <MoreExpressions> | - <Term> <MoreExpressions> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+
+
+Token: KEYWORD        Lexeme: endif
+<Statement> -> <Assign> | <Declarative>
+       | if <Conditional> then <Statement> else <Statement> endif
+       | while <Conditional> do <Statement> whileend
+       | begin <Statement> <MoreStatements> end
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+<empty> -> <epsilon>
+
+
+Token: KEYWORD        Lexeme: end
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+<empty> -> <epsilon>
+<MoreStatements> -> ; <Statement> <MoreStatements> | <empty>
+<empty> -> <epsilon>
+
+
+Successfully Parsed
