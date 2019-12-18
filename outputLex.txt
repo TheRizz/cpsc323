@@ -2,6 +2,8 @@ TOKENS                Lexemes
 KEYWORD        1       begin
 KEYWORD        2       int
 IDENTIFIER     2       a
+SEPARATOR      2       ,
+IDENTIFIER     2       z
 SEPARATOR      2       ;
 KEYWORD        3       int
 IDENTIFIER     3       b

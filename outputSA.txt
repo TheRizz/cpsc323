@@ -16,6 +16,13 @@ Token: KEYWORD        Lexeme: int
 Token: IDENTIFIER     Lexeme: a
 
 
+Token: SEPARATOR      Lexeme: ,
+<MoreIds> -> , <id> <MoreIds> ; | <empty>
+
+
+Token: IDENTIFIER     Lexeme: z
+
+
 Token: SEPARATOR      Lexeme: ;
 <MoreIds> -> , <id> <MoreIds> ; | <empty>
 <empty> -> <epsilon>
@@ -275,3 +282,10 @@ Token: KEYWORD        Lexeme: end
 
 
 Successfully Parsed
+
+
+Identifier   MemoryLocation      Type
+a              5000                int
+z              5001                int
+b              5002                int
+c              5003                int

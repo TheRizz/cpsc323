@@ -42,6 +42,22 @@ ParseTable = [
     ['@', '@', '~', '@', '@', '@', '~', '@', '@', '@', '@', '@', '@', '@', '@', 'relop E', '@', '@', '@', '@', '@', '@']#Z
 ]
 
+# create symbol table using the output of the lexer
+def createTable(tokens, lines, lexemes):
+    datatype = ''
+    variables = []
+    identList = []
+    for i in range(len(lines)):
+        if tokens[i] == 'KEYWORD':
+            datatype = lexemes[i]
+        elif tokens[i] == 'IDENTIFIER':
+            if not(lexemes[i] in identList):
+                variables.append((lexemes[i],datatype))
+                identList.append(lexemes[i])
+
+    return variables
+
+
 # function to help split up the line read in that was created from the lexer
 def parseTerms(line):
     words = []
@@ -77,10 +93,13 @@ for i in SAinFile.readlines()[1:]:
     SAoutFile.write('Lexeme: ' + lineInfo[2] + '\n')
     #end header info formatting
 
+
+    #get all tokens, lines, and lexemes
     #print(stack[-1])
     #set parsed data from the lexer to variables
     curData = lineInfo[2]
     curToke = lineInfo[0]
+
     #will run a loop on the current lexeme until it is a match and will proceed
     ifEqu = True
     while ifEqu:
@@ -98,13 +117,13 @@ for i in SAinFile.readlines()[1:]:
 
             #check to see if need to change the col name based on the token
             dataCol = ''
-            if(curToke == 'INTEGER'or curToke == 'REAL'):
+            if(curToke == 'INTEGER'or curToke == 'FLOAT'):
                 dataCol = 'num'
             elif(curToke == 'IDENTIFIER'):
                 dataCol = 'id'
             elif(curToke == 'OPERATOR' and (curData == '<' or curData == '<=' or curData == '==' or curData == '<>' or curData == '>=' or curData == '>' )):
                 dataCol = 'relop'
-            elif(curData == 'bool' or curData == 'int' or curData == 'real'):
+            elif(curData == 'bool' or curData == 'int' or curData == 'float'):
                 dataCol = 'type'
 
             #if the col name was not changed then use the real value
@@ -144,9 +163,50 @@ if stack[-1] == '$':
     stack.pop()
     print('Successfully Parsed')
     SAoutFile.write('Successfully Parsed' + '\n')
+    # tableInfo = createTable(curToke,curTokeLine,curData)
+    # for i in range(tableInfo):
+    #     print(i)
 else:
     print('Failed to Parse')
     SAoutFile.write('Failed to Parse' + '\n')
 SAinFile.close()
-SAoutFile.close()
 
+
+varInFile = open('outputLex.txt')
+
+if len(stack) == 0:
+    tokens = []
+    lines = []
+    lexemes = []
+    SAoutFile.write('{:<15}'.format('\n\nIdentifier'))
+    SAoutFile.write('{:<20}'.format('MemoryLocation'))
+    SAoutFile.write('Type' + '\n')
+    memLocation = 5000
+    print('{:<15}'.format('Identifier'),end='')
+    print('{:<20}'.format('MemoryLocation'),end='')
+    print('Type')
+
+    for i in varInFile.readlines()[1:]:
+
+
+        values = parseTerms(i)
+        tokens.append(values[0])
+        lines.append(values[1])
+        lexemes.append(values[2])
+
+    tableInfo = createTable(tokens,lines,lexemes)
+    for i in tableInfo:
+        print('{:<15}'.format(i[0]), end='')
+        print('{:<20}'.format(memLocation), end='')
+        print(i[1])
+
+        SAoutFile.write('{:<15}'.format(i[0]))
+        SAoutFile.write('{:<20}'.format(memLocation))
+        SAoutFile.write(i[1] + '\n')
+        memLocation = memLocation + 1
+
+    varInFile.close()
+
+
+
+SAoutFile.close()
